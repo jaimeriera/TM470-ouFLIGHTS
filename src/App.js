@@ -1,14 +1,18 @@
+import React from 'react';
 import './App.css';
+import Header from "./Components/Header/Header"
+import Main from "./Components/Main/Main"
+import Footer from "./Components/Footer/Footer"
 
-
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>TM470-ouFLIGHTS</h1>
-      </header>
-    </div>
-  );
+    <>
+    <Header />
+    <Main />
+    {/* 
+    <Footer /> */}
+    </>
+  )
 }
 
 export default App;
