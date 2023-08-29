@@ -27,18 +27,19 @@ const DepDesSearch = ({ setDepartureCode, setDestinationCode }) => {
         <Stack direction="row" spacing={4}>
             <Autocomplete
                 id="departureAutocomplete"
-                sx={{ width: 300 }}
+                sx={{ width: 400 }}
                 autoComplete
                 freeSolo
                 autoHighlight
                 options={options}
                 onChange={(event, newValue) => {
-                    setDepartureCode(newValue.code);
+                    setDepartureCode([newValue.code, newValue.geoLat, newValue.geoLng]);
+                    console.log([newValue.code, newValue.geoLat, newValue.geoLng]);
                 }}
                 onInputChange={(event, newInputValue) =>{
                     setInputValue(newInputValue);
                 }}
-                getOptionLabel={(option) => option.city || ""}
+                getOptionLabel={(option) => "(" + option.iata + ") " + option.city || ""}
                 renderOption={(params, option) => (
                     <Box component="li" sx={{ display: 'flex', alignItems: 'flex-end'}} {...params}>
                         <LocationOnIcon sx={{ color: 'action.active', mr: 1}} />
@@ -64,18 +65,19 @@ const DepDesSearch = ({ setDepartureCode, setDestinationCode }) => {
 
             <Autocomplete
                 id="destinationAutocomplete"
-                sx={{ width: 300 }}
+                sx={{ width: 400 }}
                 autoComplete
                 freeSolo
                 autoHighlight
                 options={options}
                 onChange={(event, newValue) => {
-                    setDestinationCode(newValue.code);
+                    setDestinationCode([newValue.code, newValue.geoLat, newValue.geoLng]);
+                    console.log([newValue.code, newValue.geoLat, newValue.geoLng]);
                 }}
                 onInputChange={(event, newInputValue) =>{
                     setInputValue(newInputValue);
                 }}
-                getOptionLabel={(option) => option.city || ""}
+                getOptionLabel={(option) => "(" + option.iata + ") " + option.city || ""}
                 renderOption={(params, option) => (
                     <Box component="li" sx={{ display: 'flex', alignItems: 'flex-end'}} {...params}>
                         <LocationOnIcon sx={{ color: 'action.active', mr: 1}} />

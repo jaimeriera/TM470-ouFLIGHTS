@@ -1,9 +1,14 @@
 import React from "react";
+import Stack from "@mui/material/Stack"
 import Search from "../Search/Search";
+import RouteMap from "../RouteMap/RouteMap";
 
 const Main = () => {
     return (
-            <Search />
+        <Stack >
+            <Search />,
+            <RouteMap />
+        </Stack>
     );
 };
 

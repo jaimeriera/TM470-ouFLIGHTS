@@ -23,3 +23,25 @@
 .cityName {
   font-weight: 400;
 }
+
+#Search {
+  background-color: azure;
+  left: 0;
+  right: 0;
+  top: 40px;
+  bottom: 0;
+  margin: auto;
+}
+
+#map {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: -1;
+  width: 90%;
+  height: 80%;
+  }
+  

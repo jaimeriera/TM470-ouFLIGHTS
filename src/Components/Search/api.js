@@ -15,13 +15,15 @@ const search = (input) => {
 
                         if(json && json.data) {
                             callback(
-                                json.data.map(({ address, iataCode}) => {
+                                json.data.map(({ address, iataCode, geoCode}) => {
                                     return {
                                         city: address.cityName,
                                         code: address.cityCode,
                                         country: address.countryName,
                                         state: address.stateCode,
                                         iata: iataCode,
+                                        geoLat: geoCode.latitude,
+                                        geoLng: geoCode.longitude,
                                     };
                                 })
                             );
