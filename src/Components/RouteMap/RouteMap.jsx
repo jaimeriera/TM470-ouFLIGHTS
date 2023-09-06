@@ -3,16 +3,19 @@ import Box from "@mui/material/Box";
 import mapboxgl from "mapbox-gl";
 import * as turf from "@turf/turf";
 
-mapboxgl.accessToken = "pk.eyJ1IjoiamFpbWVyaWVyYSIsImEiOiJjbGxieWwwcDkwODVnM2lxb3RtZXllMHRuIn0.gKXxIkyUhAVZfMUZWeG2FQ";
+mapboxgl.accessToken = "pk.eyJ1IjoiamFpbWVyaWVyYSIsImEiOiJjbG0xdTczOXUzaGJmM2R0aDNsaWM5c3drIn0.5nTWss9PRWJ4Usp5jC-EsA";
 
 const RouteMap = () => {
     const [map, setMap] = useState(null);
+    const [origin, setOrigin] = useState('');
+    const [destination, setDestination] = useState('');
   
     useEffect(() => {
       const initializeMap = () => {
         const initialCoordinates = [-96, 37.8]; // Initial coordinates
         const initialZoom = 2; // Initial zoom level
         const initialPitch = 20; // Initial pitch level
+
   
         const map = new mapboxgl.Map({
           container: 'map',
@@ -90,7 +93,7 @@ const RouteMap = () => {
             type: 'symbol',
             layout: {
               'icon-image': 'airport',
-              'icon-size': 1.5,
+              'icon-size': 2,
               'icon-rotate': ['get', 'bearing'],
               'icon-rotation-alignment': 'map',
               'icon-allow-overlap': true,
