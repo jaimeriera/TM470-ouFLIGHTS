@@ -22,44 +22,43 @@ const DestinationSearch = ({ setDestinationCode }) => {
     }, [inputValue]);
 
     return (
-        <div>
-            <Autocomplete
-                id="destinationAutocomplete"
-                sx={{ width: 300 }}
-                autoComplete
-                freeSolo
-                autoHighlight
-                options={options}
-                onChange={(event, newValue) => {
-                    setDestinationCode(newValue.code);
-                }}
-                onInputChange={(event, newInputValue) =>{
-                    setInputValue(newInputValue);
-                }}
-                getOptionLabel={(option) => option.city || ""}
-                renderOption={(props, option) => (
-                    <Box component="li" sx={{ display: 'flex', alignItems: 'flex-end'}} {...props}>
-                        <LocationOnIcon sx={{ color: 'action.active', mr: 1}} />
-                        {option.iata} - {option.city}
-                    </Box>
-                )}
-                renderInput={(params) => (
-                    <TextField
-                        {...params}
-                        placeholder="Destination City"
-                        label="Destination City"
-                        InputProps={{
-                            ...params.InputProps,
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <FlightLandIcon />
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                )}
-            />
-        </div>
+        <Autocomplete
+            id="destinationAutocomplete"
+            size='small'
+            sx={{ width: 400 }}
+            autoComplete
+            freeSolo
+            autoHighlight
+            options={options}
+            onChange={(event, newValue) => {
+                setDestinationCode(newValue.code);
+            }}
+            onInputChange={(event, newInputValue) =>{
+                setInputValue(newInputValue);
+            }}
+            getOptionLabel={(option) => option.city || ""}
+            renderOption={(props, option) => (
+                <Box component="li" sx={{ display: 'flex', alignItems: 'flex-end'}} {...props}>
+                    <LocationOnIcon sx={{ color: 'action.active', mr: 1}} />
+                    {option.iata} - {option.city}
+                </Box>
+            )}
+            renderInput={(params) => (
+                <TextField
+                    {...params}
+                    placeholder="Destination City"
+                    label="Destination City"
+                    InputProps={{
+                        ...params.InputProps,
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <FlightLandIcon />
+                            </InputAdornment>
+                        ),
+                    }}
+                />
+            )}
+        />
     );
 };
 

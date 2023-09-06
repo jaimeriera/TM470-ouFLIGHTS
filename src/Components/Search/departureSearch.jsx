@@ -2,14 +2,16 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import Stack from '@mui/material/Stack';
+import Grid from '@mui/material/Stack';
 import { InputAdornment } from '@mui/material';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import search from "./api";
+import { useTheme } from '@mui/material/styles'
 
-const DepDesSearch = ({ setDepartureCode, setDestinationCode }) => {
+const DepartureSearch = ({ setDepartureCode}) => {
+    const theme = useTheme();
     const [inputValue, setInputValue] = React.useState("");
     const [options, setOptions] = React.useState([]);
 
@@ -24,9 +26,9 @@ const DepDesSearch = ({ setDepartureCode, setDestinationCode }) => {
     }, [inputValue]);
 
     return (
-        <Stack direction="row" spacing={4}>
             <Autocomplete
                 id="departureAutocomplete"
+                size='small'
                 sx={{ width: 400 }}
                 autoComplete
                 freeSolo
@@ -41,8 +43,8 @@ const DepDesSearch = ({ setDepartureCode, setDestinationCode }) => {
                 }}
                 getOptionLabel={(option) => "(" + option.iata + ") " + option.city || ""}
                 renderOption={(params, option) => (
-                    <Box component="li" sx={{ display: 'flex', alignItems: 'flex-end'}} {...params}>
-                        <LocationOnIcon sx={{ color: 'action.active', mr: 1}} />
+                    <Box component="li"  {...params}>
+                        <LocationOnIcon  />
                         {option.iata} - {option.city}
                     </Box>
                 )}
@@ -62,46 +64,7 @@ const DepDesSearch = ({ setDepartureCode, setDestinationCode }) => {
                     />
                 )}
             />
-
-            <Autocomplete
-                id="destinationAutocomplete"
-                sx={{ width: 400 }}
-                autoComplete
-                freeSolo
-                autoHighlight
-                options={options}
-                onChange={(event, newValue) => {
-                    setDestinationCode([newValue.code, newValue.geoLat, newValue.geoLng]);
-                    console.log([newValue.code, newValue.geoLat, newValue.geoLng]);
-                }}
-                onInputChange={(event, newInputValue) =>{
-                    setInputValue(newInputValue);
-                }}
-                getOptionLabel={(option) => "(" + option.iata + ") " + option.city || ""}
-                renderOption={(params, option) => (
-                    <Box component="li" sx={{ display: 'flex', alignItems: 'flex-end'}} {...params}>
-                        <LocationOnIcon sx={{ color: 'action.active', mr: 1}} />
-                        {option.iata} - {option.city}
-                    </Box>
-                )}
-                renderInput={(params) => (
-                    <TextField
-                        {...params}
-                        placeholder="Destination City"
-                        label="Destination City"
-                        InputProps={{
-                            ...params.InputProps,
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <FlightLandIcon />
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                )}
-            />
-        </Stack>
     );
 };
 
-export default DepDesSearch;
+export default DepartureSearch;
