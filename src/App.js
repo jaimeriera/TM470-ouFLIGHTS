@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import Header from "./Components/Header/Header"
 import Main from "./Components/Main/Main"
