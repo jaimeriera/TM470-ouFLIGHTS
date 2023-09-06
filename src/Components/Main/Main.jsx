@@ -1,14 +1,14 @@
 import React from "react";
-import Stack from "@mui/material/Stack"
+import Box from "@mui/material/Box"
 import Search from "../Search/Search";
 import RouteMap from "../RouteMap/RouteMap";
 
 const Main = () => {
     return (
-        <Stack >
-            <Search />,
+        <Box display={"flex-wrap"}>
+            <Search />
             <RouteMap />
-        </Stack>
+        </Box>
     );
 };
 
